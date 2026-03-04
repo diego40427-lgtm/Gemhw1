@@ -3,26 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>地震學全書 - SEISMOLAB</title>
+    <title>地震學全書 - 深入地殼的互動旅程</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <style>
-        body { font-family: 'Noto Sans TC', sans-serif; scroll-behavior: smooth; }
-        .glass-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); }
-        .answer-content { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
-        .answer-content.show { max-height: 800px; }
-        .wave-container { height: 120px; background: #0f172a; border-radius: 1rem; margin-bottom: 1rem; position: relative; overflow: hidden; }
-        @keyframes pulse-slow { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
-        .pulse-bg { animation: pulse-slow 4s infinite; }
-    </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
+
     <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-lg border-b border-slate-200 shadow-sm">
-        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between py-4">
+        <div class="max-w-7xl mx-auto px-6 h-18 flex items-center justify-between py-4">
             <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-200">
+                <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                 </div>
                 <span class="text-2xl font-black text-slate-900 tracking-tighter">SEISMO<span class="text-indigo-600">LAB</span></span>
@@ -36,20 +29,79 @@
         </div>
     </nav>
 
-    <script>
-        function toggleAnswer(id) {
-            const element = document.getElementById(id);
-            const btn = element.previousElementSibling;
-            if (element.classList.contains('show')) {
-                element.classList.remove('show');
-                btn.textContent = '顯示解答';
-                btn.classList.replace('bg-indigo-600', 'bg-slate-900');
-            } else {
-                element.classList.add('show');
-                btn.textContent = '隱藏解答';
-                btn.classList.replace('bg-slate-900', 'bg-indigo-600');
-            }
-        }
-    </script>
+    <header id="intro" class="relative pt-24 pb-32 px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="space-y-8">
+            <h1 class="text-6xl font-black text-slate-900 leading-[1.1]">地球是個<br><span class="text-indigo-600">大音箱</span></h1>
+            <p class="text-xl text-slate-600">地震學透過觀察彈性波，揭開行星從地殼到地核的祕密。</p>
+            <div class="flex space-x-4">
+                <a href="#theory" class="px-8 py-4 bg-indigo-600 text-white rounded-2xl font-bold shadow-xl hover:-translate-y-1 transition">開始探索</a>
+            </div>
+        </div>
+        <div class="bg-slate-900 rounded-[3rem] p-8 shadow-2xl relative">
+            <svg viewBox="0 0 400 150" class="w-full">
+                <path d="M0 75 L50 75 L55 60 L60 90 L65 75 L120 75" fill="none" stroke="#6366f1" stroke-width="2" />
+                <path d="M120 75 L130 30 L145 120 L160 30 L175 120 L200 75" fill="none" stroke="#f59e0b" stroke-width="3" />
+                <path d="M200 75 Q215 10 230 75 T260 75 T290 75 T320 75 L400 75" fill="none" stroke="#ec4899" stroke-width="4">
+                    <animate attributeName="stroke-dasharray" from="0,1000" to="1000,0" dur="4s" repeatCount="indefinite" />
+                </path>
+            </svg>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 space-y-32">
+        <section id="theory" class="scroll-mt-24">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-white p-8 rounded-[2rem] shadow-xl border border-slate-100">
+                    <div class="wave-container flex items-center justify-around">
+                        <svg width="100%" height="40"><g fill="#6366f1"><circle cx="10%" cy="20" r="4"><animate attributeName="cx" values="8%;12%;8%" dur="0.6s" repeatCount="indefinite" /></circle><circle cx="50%" cy="20" r="4"><animate attributeName="cx" values="48%;52%;48%" dur="0.6s" begin="0.2s" repeatCount="indefinite" /></circle></g></svg>
+                    </div>
+                    <h3 class="text-xl font-bold">P 波 (Primary)</h3>
+                    <p class="text-slate-500 text-sm mt-4">壓縮波，能在固體與液體中傳遞。</p>
+                </div>
+                <div class="bg-white p-8 rounded-[2rem] shadow-xl border border-slate-100">
+                    <div class="wave-container flex items-center justify-around">
+                        <svg width="100%" height="60"><path d="M0 30 Q50 0 100 30 T200 30" fill="none" stroke="#f59e0b" stroke-width="3"><animate attributeName="d" values="M0 30 Q50 0 100 30 T200 30; M0 30 Q50 60 100 30 T200 30; M0 30 Q50 0 100 30 T200 30" dur="1.2s" repeatCount="indefinite" /></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold">S 波 (Secondary)</h3>
+                    <p class="text-slate-500 text-sm mt-4">剪力波，無法在液體中傳播。</p>
+                </div>
+                <div class="bg-white p-8 rounded-[2rem] shadow-xl border border-slate-100">
+                    <div class="wave-container flex items-center justify-around">
+                        <svg width="100%" height="60"><circle cx="50%" cy="30" r="5" fill="#ec4899"><animateTransform attributeName="transform" type="rotate" from="0 50 30" to="360 50 30" dur="2s" repeatCount="indefinite" /></circle></svg>
+                    </div>
+                    <h3 class="text-xl font-bold">表面波 (Surface)</h3>
+                    <p class="text-slate-500 text-sm mt-4">振幅最大，災害的主因。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-indigo-600 rounded-[3rem] p-12 text-white">
+            <h2 class="text-3xl font-bold mb-6">逆向問題 (Inverse Problems)</h2>
+            <p class="text-lg">我們透過地表的結果，推導內部的結構：</p>
+            <div class="mt-4 bg-white/10 p-6 rounded-xl font-mono">
+                \[ d = G(m) \]
+                <span class="text-sm opacity-80">其中 \(d\) 為觀測數據，\(m\) 為地球模型參數。</span>
+            </div>
+        </section>
+
+        <section id="quiz" class="space-y-8 pb-20">
+            <h2 class="text-3xl font-bold text-center">深度思考</h2>
+            <div class="glass-card rounded-3xl p-8 max-w-2xl mx-auto shadow-xl">
+                <h3 class="text-xl font-bold mb-4">為什麼增加模型參數不一定是好事？</h3>
+                <button onclick="toggleAnswer('ans1')" id="btn-ans1" class="px-6 py-2 bg-slate-900 text-white rounded-full text-sm font-bold transition">顯示解答</button>
+                <div id="ans1" class="answer-content mt-6">
+                    <div class="p-6 bg-indigo-50/50 rounded-2xl text-slate-700">
+                        這是<strong>過度擬合 (Overfitting)</strong>。過多的參數會讓模型開始「背誦」雜訊而非學習物理規律。
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 text-center text-sm">
+        &copy; 2026 SeismoLab - 針對你的 RTX 4060 環境優化
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
