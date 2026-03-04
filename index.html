@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地震學全書 - SEISMOLAB</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Noto Sans TC', sans-serif; scroll-behavior: smooth; }
+        .glass-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); }
+        .answer-content { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .answer-content.show { max-height: 800px; }
+        .wave-container { height: 120px; background: #0f172a; border-radius: 1rem; margin-bottom: 1rem; position: relative; overflow: hidden; }
+        @keyframes pulse-slow { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
+        .pulse-bg { animation: pulse-slow 4s infinite; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-lg border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between py-4">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-200">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                </div>
+                <span class="text-2xl font-black text-slate-900 tracking-tighter">SEISMO<span class="text-indigo-600">LAB</span></span>
+            </div>
+            <div class="hidden lg:flex space-x-10 font-bold text-slate-600">
+                <a href="#intro" class="hover:text-indigo-600 transition">學科簡介</a>
+                <a href="#theory" class="hover:text-indigo-600 transition">震波理論</a>
+                <a href="#society" class="hover:text-indigo-600 transition">社會應用</a>
+                <a href="#quiz" class="hover:text-indigo-600 transition">挑戰</a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        function toggleAnswer(id) {
+            const element = document.getElementById(id);
+            const btn = element.previousElementSibling;
+            if (element.classList.contains('show')) {
+                element.classList.remove('show');
+                btn.textContent = '顯示解答';
+                btn.classList.replace('bg-indigo-600', 'bg-slate-900');
+            } else {
+                element.classList.add('show');
+                btn.textContent = '隱藏解答';
+                btn.classList.replace('bg-slate-900', 'bg-indigo-600');
+            }
+        }
+    </script>
+</body>
+</html>
